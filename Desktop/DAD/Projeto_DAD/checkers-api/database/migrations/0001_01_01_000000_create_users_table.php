@@ -17,6 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            
+            // Adiciona esta linha para gerir os papéis (ex: 'player' ou 'admin')
+            $table->enum('role', ['player', 'admin'])->default('player');
+            
+            // Adiciona esta linha para o ranking competitivo
+            $table->integer('rank')->default(0); 
+            
             $table->rememberToken();
             $table->timestamps();
         });
